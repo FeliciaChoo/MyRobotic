@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="fixed a-star">
+    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="added diagram to the A*">
       <change beforePath="$PROJECT_DIR$/video2Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video2Page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +104,31 @@
       <option name="project" value="LOCAL" />
       <updated>1766416263623</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change structure for explanation">
+      <option name="closed" value="true" />
+      <created>1766417265491</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1766417265491</updated>
+    </task>
+    <task id="LOCAL-00007" summary="change cost function from a* to cost function section">
+      <option name="closed" value="true" />
+      <created>1766419576343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1766419576343</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added diagram to the A*">
+      <option name="closed" value="true" />
+      <created>1766420947685</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1766420947685</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -113,6 +137,9 @@
     <MESSAGE value="add distance simulator" />
     <MESSAGE value="A* algorithm" />
     <MESSAGE value="fixed a-star" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed a-star" />
+    <MESSAGE value="change structure for explanation" />
+    <MESSAGE value="change cost function from a* to cost function section" />
+    <MESSAGE value="added diagram to the A*" />
+    <option name="LAST_COMMIT_MESSAGE" value="added diagram to the A*" />
   </component>
 </project>
