@@ -396,3 +396,118 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 })();
+
+document.addEventListener("DOMContentLoaded", () => {
+  const gridSize = 8;
+  const start = { x: 0, y: 0 };
+  const goal = { x: 7, y: 4 }; // Not perfectly diagonal
+
+  const gridWrapper = document.getElementById("gridWrapper");
+  const heuristicSelect = document.getElementById("heuristicSelect");
+  const codeContent = document.getElementById("codeContent");
+  const heuristicDesc = document.getElementById("heuristicDesc");
+
+  function createGrid(path = [], type = 'manhattan') {
+    gridWrapper.innerHTML = '';
+    const grid = document.createElement('div');
+    grid.className = 'heuristic-grid';
+    grid.style.gridTemplateColumns = `repeat(${gridSize}, 50px)`;
+
+    for (let y = 0; y < gridSize; y++) {
+      for (let x = 0; x < gridSize; x++) {
+        const cell = document.createElement('div');
+        cell.className = 'cell';
+
+        // highlight start and goal
+        if (x === start.x && y === start.y) {
+          cell.classList.add('start');
+          cell.textContent = 'S';
+        }
+        if (x === goal.x && y === goal.y) {
+          cell.classList.add('goal');
+          cell.textContent = 'G';
+        }
+
+        if (path.find(p => p.x === x && p.y === y)) {
+          if (type === 'manhattan') cell.style.background = '#ffc107';
+          else if (type === 'euclidean') cell.style.background = '#03a9f4';
+          else if (type === 'diagonal') cell.style.background = '#ff5722';
+        }
+
+        grid.appendChild(cell);
+      }
+    }
+    gridWrapper.appendChild(grid);
+  }
+
+  function manhattanPath() {
+    let path = [];
+    let x = start.x, y = start.y;
+    while (x !== goal.x) { path.push({ x, y }); x += x < goal.x ? 1 : -1; }
+    while (y !== goal.y) { path.push({ x, y }); y += y < goal.y ? 1 : -1; }
+    path.push({ x: goal.x, y: goal.y });
+    return path;
+  }
+
+  function euclideanPath() {
+    // Euclidean prefers balanced movement - move diagonally when possible but more gradually
+    let path = [], x = start.x, y = start.y;
+    while (x !== goal.x || y !== goal.y) {
+      path.push({ x, y });
+      const dx = Math.abs(goal.x - x);
+      const dy = Math.abs(goal.y - y);
+
+      // Move more horizontally if x distance is greater
+      if (dx > dy && x !== goal.x) {
+        x += x < goal.x ? 1 : -1;
+      } else if (dy > dx && y !== goal.y) {
+        y += y < goal.y ? 1 : -1;
+      } else {
+        // Equal distance - move diagonally
+        if (x !== goal.x) x += x < goal.x ? 1 : -1;
+        if (y !== goal.y) y += y < goal.y ? 1 : -1;
+      }
+    }
+    path.push({ x: goal.x, y: goal.y });
+    return path;
+  }
+
+  function diagonalPath() {
+    let path = [];
+    let x = start.x, y = start.y;
+    const dx = goal.x - x, dy = goal.y - y;
+    const steps = Math.min(Math.abs(dx), Math.abs(dy));
+    for (let i = 0; i < steps; i++) {
+      path.push({ x, y });
+      x += dx > 0 ? 1 : -1;
+      y += dy > 0 ? 1 : -1;
+    }
+    while (x !== goal.x) { path.push({ x, y }); x += x < goal.x ? 1 : -1; }
+    while (y !== goal.y) { path.push({ x, y }); y += y < goal.y ? 1 : -1; }
+    path.push({ x: goal.x, y: goal.y });
+    return path;
+  }
+
+  function showHeuristic(type) {
+    let path = [], code = '', desc = '';
+    if (type === 'manhattan') {
+      path = manhattanPath();
+      code = `// Manhattan Distance\nfunction manhattan(x1,y1,x2,y2){\n  return Math.abs(x1-x2)+Math.abs(y1-y2);\n}`;
+      desc = "Manhattan: horizontal then vertical. Yellow path.";
+    } else if (type === 'euclidean') {
+      path = euclideanPath();
+      code = `// Euclidean Distance\nfunction euclidean(x1,y1,x2,y2){\n  return Math.sqrt((x1-x2)**2 + (y1-y2)**2);\n}`;
+      desc = "Euclidean: balances x and y movement proportionally. Blue path.";
+    } else {
+      path = diagonalPath();
+      code = `// Diagonal Distance\nfunction diagonal(x1,y1,x2,y2){\n  return Math.max(Math.abs(x1-x2), Math.abs(y1-y2));\n}`;
+      desc = "Diagonal: prioritize diagonal steps first, then horizontal/vertical. Orange path.";
+    }
+    createGrid(path, type);
+    codeContent.textContent = code;
+    heuristicDesc.textContent = desc;
+  }
+
+  heuristicSelect.addEventListener('change', e => showHeuristic(e.target.value));
+  showHeuristic('manhattan');
+});

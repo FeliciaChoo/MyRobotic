@@ -144,11 +144,11 @@
 
             <p>
                 A* (A-star) is a pathfinding algorithm that finds the shortest path from a start node to a goal node.
-                It is widely used in robotics, AI and navigation because it balances explored cost and estimated cost.
+                It is widely used in robotics, AI, and navigation because it balances explored cost and estimated cost.
             </p>
 
 
-            <h5>How A* works</h5>
+            <h5>How A* works (high-level)</h5>
             <ol>
                 <li>Start from the <strong>Start</strong> cell and place it into an “open list”.</li>
                 <li>Pick the node with the <strong>lowest f(n)</strong> from the open list.</li>
@@ -157,23 +157,9 @@
             </ol>
 
             <div class="alert alert-info mt-4">
-                <strong>Tip:</strong>
-                If the heuristic <em>h(n)</em> does not overestimate the remaining distance,
-                A* will always find the shortest possible path.
+                <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
+                A* is guaranteed to return an optimal shortest path.
             </div>
-
-            <h5>Grid Map Representation</h5>
-            <p>
-                The environment is represented as a two-dimensional grid map, where each square
-                corresponds to a possible position the robot can occupy.
-            </p>
-
-            <ul>
-                <li>Each grid cell represents a discrete location in the environment.</li>
-                <li>The robot can move between neighbouring cells in four directions: up, down, left, and right.</li>
-                <li>Some cells are blocked by obstacles and cannot be traversed.</li>
-            </ul>
-
 
             <!-- A* Visualization -->
             <div class="card mt-4">
@@ -203,41 +189,17 @@
                 </div>
             </div>
 
-            <!-- A* Calculation Explanation (hidden by default) -->
-            <div id="astarCalcBox" class="card mt-4 d-none">
-                <div class="card-body">
-                    <h5 class="card-title mb-2">How the Path Length is Calculated</h5>
+            <h5>Grid Map Representation</h5>
+            <p>
+                The environment is represented as a two-dimensional grid map, where each square
+                corresponds to a possible position the robot can occupy.
+            </p>
 
-                    <p>
-                        A* does not directly calculate the final path length using the formula.
-                        Instead, it uses the cost function below to decide which grid cell to
-                        explore next.
-                    </p>
-
-                    <div class="p-3 rounded mb-3" style="background:#f6fbff;">
-                        <code style="font-size:1.05rem;">f(n) = g(n) + h(n)</code>
-                    </div>
-
-                    <ul>
-                        <li><strong>g(n)</strong> – number of steps from Start to the current cell</li>
-                        <li><strong>h(n)</strong> – estimated remaining distance to the Goal</li>
-                        <li><strong>f(n)</strong> – score used to prioritise which cell to explore</li>
-                    </ul>
-
-                    <p class="mt-3">
-                        Once the Goal is reached, the algorithm stops and the final
-                        <strong>path length is taken from g(goal)</strong>.
-                    </p>
-
-                    <div class="alert alert-success mt-3">
-                        <strong>In this simulation:</strong>
-                        The robot reached the goal with <strong>g(goal) = 18</strong>,
-                        meaning the shortest path contains <strong>18 steps</strong>.
-                    </div>
-                </div>
-            </div>
-
-
+            <ul>
+                <li>Each grid cell represents a discrete location in the environment.</li>
+                <li>The robot can move between neighbouring cells in four directions: up, down, left, and right.</li>
+                <li>Some cells are blocked by obstacles and cannot be traversed.</li>
+            </ul>
 
 
         </div>
