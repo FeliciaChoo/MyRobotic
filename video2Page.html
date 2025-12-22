@@ -13,9 +13,7 @@
 
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -38,7 +36,7 @@
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li class="dropdown">
-                    <a href="index.html#overview"><span>Home</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <a href="index.html#overview"><span>About</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="index.html#overview">Overview</a></li>
                         <li><a href="index.html#objectives">Objectives</a></li>
@@ -66,7 +64,7 @@
                         <li><a href="#problem-setup">Problem Setup</a></li>
                         <li><a href="#grid-map">Grid Map</a></li>
                         <li><a href="#a-star">A* Algorithm</a></li>
-                        <li><a href="#heuristic">Heuristic</a></li>
+                        <li><a href="#cost-function">Cost Function</a></li>
                         <li><a href="#obstacle-demo">Obstacle Demo</a></li>
                     </ul>
                 </li>
@@ -100,20 +98,18 @@
                 </ol>
             </div>
         </nav>
+    </div><section id="interactive-video2" class="starter-section section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Watch & Explore</h2>
+        <p>Video Introduction</p>
     </div>
-
-    <section id="interactive-video2" class="starter-section section">
-        <div class="container section-title" data-aos="fade-up">
-            <h2>Watch & Explore</h2>
-            <p>Video Introduction</p>
+    <div class="container" data-aos="fade-up">
+        <p><strong>[Video Placeholder]</strong> - Introduction to autonomous navigation.</p>
+        <div class="ratio ratio-16x9" style="background-color: #eee; display: flex; align-items: center; justify-content: center;">
+            <p class="text-muted">Video content will be placed here</p>
         </div>
-        <div class="container" data-aos="fade-up">
-            <p><strong>[Video Placeholder]</strong> - Introduction to autonomous navigation.</p>
-            <div class="ratio ratio-16x9" style="background-color: #eee; display: flex; align-items: center; justify-content: center;">
-                <p class="text-muted">Video content will be placed here</p>
-            </div>
-        </div>
-    </section>
+    </div>
+</section>
 
     <section id="problem-setup" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
@@ -139,14 +135,11 @@
     </section>
 
     <section id="a-star" class="starter-section section">
-
-        <!-- Section title -->
         <div class="container section-title" data-aos="fade-up">
             <h2>A* Algorithm Concept</h2>
             <p>Optimal path planning using cost + heuristic</p>
         </div>
 
-        <!-- Main content -->
         <div class="container" data-aos="fade-up">
 
             <p>
@@ -154,36 +147,33 @@
                 It is widely used in robotics, AI, and navigation because it balances explored cost and estimated cost.
             </p>
 
-            <!-- Cost function card -->
             <div class="card my-4">
                 <div class="card-body">
                     <h5 class="card-title mb-2">Cost Function</h5>
-                    <p class="mb-2">A* evaluates nodes using:</p>
-
-                    <div class="p-3 rounded text-center" style="background:#f6fbff;">
+                    <p class="mb-2">
+                        A* evaluates nodes using:
+                    </p>
+                    <div class="p-3 rounded" style="background:#f6fbff;">
                         <code style="font-size: 1.05rem;">f(n) = g(n) + h(n)</code>
                     </div>
-
                     <ul class="mt-3 mb-0">
                         <li><strong>g(n)</strong>: actual cost from Start → current node</li>
                         <li><strong>h(n)</strong>: heuristic estimate from current node → Goal</li>
-                        <li><strong>f(n)</strong>: total estimated cost (lowest f(n) is expanded next)</li>
+                        <li><strong>f(n)</strong>: total estimated cost via that node (A* picks the lowest f(n) next)</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Algorithm steps -->
             <h5>How A* works (high-level)</h5>
             <ol>
-                <li>Start from the <strong>Start</strong> cell and place it into an open list.</li>
-                <li>Select the node with the <strong>lowest f(n)</strong>.</li>
-                <li>Expand neighbouring cells and update costs if a better path is found.</li>
-                <li>Move expanded nodes to the closed list until the <strong>Goal</strong> is reached.</li>
+                <li>Start from the <strong>Start</strong> cell and place it into an “open list”.</li>
+                <li>Pick the node with the <strong>lowest f(n)</strong> from the open list.</li>
+                <li>Expand its neighbours and update their costs if a better path is found.</li>
+                <li>Move expanded nodes to a “closed list” and repeat until the <strong>Goal</strong> is reached.</li>
             </ol>
 
-            <!-- Tip -->
             <div class="alert alert-info mt-4">
-                <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance,
+                <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
                 A* is guaranteed to return an optimal shortest path.
             </div>
 
@@ -193,7 +183,7 @@
                     <h5 class="card-title mb-2">A* Visualisation (Grid Map)</h5>
                     <p class="text-muted mb-3">
                         Click <strong>Run A*</strong> to see explored nodes and the final shortest path on a grid.
-                        This demo uses a Manhattan-distance heuristic.
+                        This demo uses a simple Manhattan-distance heuristic.
                     </p>
 
                     <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
@@ -211,63 +201,53 @@
                         <span class="badge astar-badge astar-path">Path</span>
                     </div>
 
-                    <div id="astarGrid"
-                         class="astar-grid"
-                         aria-label="A* grid visualisation"></div>
+                    <div id="astarGrid" class="astar-grid" aria-label="A* grid visualisation"></div>
                 </div>
             </div>
 
-            <!-- Grid context (aligned, not duplicated conceptually) -->
-            <h5 class="mt-4">Grid Map Representation (Context)</h5>
+            <h5>Grid Map Representation</h5>
             <p>
                 The environment is represented as a two-dimensional grid map, where each square
                 corresponds to a possible position the robot can occupy.
             </p>
 
             <ul>
-                <li>Each grid cell represents a discrete location.</li>
-                <li>Movement is allowed in four directions: up, down, left, and right.</li>
-                <li>Cells containing obstacles cannot be traversed.</li>
+                <li>Each grid cell represents a discrete location in the environment.</li>
+                <li>The robot can move between neighbouring cells in four directions: up, down, left, and right.</li>
+                <li>Some cells are blocked by obstacles and cannot be traversed.</li>
             </ul>
+
 
         </div>
     </section>
 
 
-    <section id="heuristic" class="starter-section section">
+    <section id="cost-function" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Heuristic</h2>
-            <p>Guiding the robot smartly</p>
+            <h2>Cost Function</h2>
+            <p>The Math: f(n) = g(n) + h(n)</p>
         </div>
-
         <div class="container" data-aos="fade-up">
-            <p>
-                A heuristic estimates how far the robot is from the goal. Each heuristic creates a different "path thinking".
-            </p>
+            <p>How does the robot decide which step to take? It calculates the cost:</p>
+            <ul>
+                <li><strong>g(n):</strong> Cost from start to current node.</li>
+                <li><strong>h(n):</strong> Heuristic estimated cost to the goal.</li>
+            </ul>
+        </div>
+    </section>
 
-            <!-- Heuristic Selection -->
-            <label for="heuristicSelect"><strong>Choose Heuristic:</strong></label>
-            <select id="heuristicSelect">
-                <option value="manhattan">Manhattan Distance</option>
-                <option value="euclidean">Euclidean Distance</option>
-                <option value="diagonal">Diagonal Distance</option>
-            </select>
-
-            <!-- Short Explanation -->
-            <p id="heuristicDesc" class="mt-2" style="font-style:italic; color:#555;"></p>
-
-            <!-- Visualization Grid -->
-            <div id="gridWrapper" class="heuristic-grid-wrapper mt-3"></div>
-
-            <!-- Code Snippet -->
-            <h5 class="mt-4">Code Snippet</h5>
-            <div id="codeSnippet" class="colab-cell">
-                <div class="colab-header">📘 Heuristic Function</div>
-                <pre><code id="codeContent"></code></pre>
+    <section id="obstacle-demo" class="starter-section section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Obstacle Demo</h2>
+            <p>Interactive Simulation</p>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <p>Click on the grid below to place obstacles and see how the A* algorithm recalculates the path.</p>
+            <div style="border: 2px dashed #ccc; padding: 40px; text-align: center;">
+                Interactive A* Grid Simulation Placeholder
             </div>
         </div>
     </section>
-
 
 </main>
 
@@ -280,8 +260,7 @@
     </div>
 </footer>
 
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
 <div id="preloader"></div>
 
