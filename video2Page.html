@@ -63,8 +63,8 @@
                         <li><a href="#interactive-video2">Watch & Explore</a></li>
                         <li><a href="#problem-setup">Problem Setup</a></li>
                         <li><a href="#grid-map">Grid Map</a></li>
-                        <li><a href="#a-star">A* Algorithm</a></li>
-                        <li><a href="#cost-function">Cost Function</a></li>
+                        <li><a href="#a-star">A* Algorithm&Cost Function</a></li>
+                        <li><a href="#heuristic">Heuristic </a></li>
                         <li><a href="#obstacle-demo">Obstacle Demo</a></li>
                     </ul>
                 </li>
@@ -222,19 +222,41 @@
     </section>
 
 
-    <section id="cost-function" class="starter-section section">
+    <section id="heuristic" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Cost Function</h2>
-            <p>The Math: f(n) = g(n) + h(n)</p>
+            <h2>Heuristic</h2>
+            <p>Guiding the robot smartly</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>How does the robot decide which step to take? It calculates the cost:</p>
-            <ul>
-                <li><strong>g(n):</strong> Cost from start to current node.</li>
-                <li><strong>h(n):</strong> Heuristic estimated cost to the goal.</li>
-            </ul>
+            <p>
+                A heuristic estimates how far the robot is from the goal. Each heuristic creates a different "path thinking".
+            </p>
+
+            <!-- Heuristic Selection -->
+            <label for="heuristicSelect"><strong>Choose Heuristic:</strong></label>
+            <select id="heuristicSelect">
+                <option value="manhattan">Manhattan Distance</option>
+                <option value="euclidean">Euclidean Distance</option>
+                <option value="diagonal">Diagonal Distance</option>
+            </select>
+
+            <!-- Short Explanation -->
+            <p id="heuristicDesc" class="mt-2" style="font-style:italic; color:#555;"></p>
+
+            <!-- Visualization Grid -->
+            <div id="gridWrapper" class="heuristic-grid-wrapper mt-3"></div>
+
+            <!-- Code Snippet -->
+            <h5 class="mt-4">Code Snippet</h5>
+            <div id="codeSnippet" class="colab-cell">
+                <div class="colab-header">📘 Heuristic Function</div>
+                <pre><code id="codeContent"></code></pre>
+            </div>
         </div>
     </section>
+
+
 
     <section id="obstacle-demo" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
