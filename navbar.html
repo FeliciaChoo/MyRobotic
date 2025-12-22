@@ -40,17 +40,38 @@
             <h1 class="sitename">Volt</h1>
         </a>
 
+        <!-- ======= Navbar ======= -->
         <nav id="navmenu" class="navmenu">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <!-- Introduction Section -->
                 <li class="dropdown">
-                    <a href="#"><span>Sections / Videos</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <a href="#"><span>Introduction</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#audience">Audience</a></li>
+                        <li><a href="#content">Content</a></li>
+                    </ul>
+                </li>
+
+                <!-- Video 1: Robot Sensors & Perception -->
+                <li class="dropdown">
+                    <a href="#"><span>Robot Sensors & Perception</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="#what-is-sensor">What is a Sensor?</a></li>
                         <li><a href="#camera">Camera = Eyes</a></li>
                         <li><a href="#ultrasonic">Ultrasonic = Ears</a></li>
                         <li><a href="#tinkercad">Tinkercad Demo</a></li>
                         <li><a href="#why-sensors-matter">Why Sensors Matter</a></li>
+                    </ul>
+                </li>
+
+                <!-- Video 2: Path Planning & Navigation -->
+                <li class="dropdown">
+                    <a href="#"><span>Path Planning & Navigation</span> <i
+                            class="bi bi-chevron-down toggle-dropdown"></i></a>
+                    <ul>
                         <li><a href="#problem-setup">Problem Setup</a></li>
                         <li><a href="#grid-map">Grid Map</a></li>
                         <li><a href="#a-star">A* Algorithm</a></li>
@@ -62,8 +83,7 @@
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
 
-
-        <a class="btn-getstarted" href="#what-is-sensor">Get Started</a>
+        <a class="btn-getstarted" href="#overview">Get Started</a>
     </div>
 </header>
 
@@ -77,7 +97,35 @@
         </div>
     </section>
 
-    <!-- ======= Video 1 — Sensors ======= -->
+    <!-- ======= Introduction Sections ======= -->
+    <section id="overview" class="starter-section section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Overview</h2>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <p>Project overview content goes here.</p>
+        </div>
+    </section>
+
+    <section id="audience" class="starter-section section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Audience</h2>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <p>Audience details go here.</p>
+        </div>
+    </section>
+
+    <section id="content" class="starter-section section">
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Content</h2>
+        </div>
+        <div class="container" data-aos="fade-up">
+            <p>Content description goes here.</p>
+        </div>
+    </section>
+
+    <!-- ======= Video 1 — Robot Sensors & Perception ======= -->
     <section id="what-is-sensor" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
             <h2>What is a Sensor?</h2>
@@ -124,7 +172,7 @@
         </div>
     </section>
 
-    <!-- ======= Video 2 — Undergraduate Navigation ======= -->
+    <!-- ======= Video 2 — Path Planning & Navigation ======= -->
     <section id="problem-setup" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Problem Setup</h2>
@@ -197,18 +245,18 @@
                 <h4>Useful Links</h4>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#what-is-sensor">Sensors</a></li>
-                    <li><a href="#camera">Camera</a></li>
-                    <li><a href="#ultrasonic">Ultrasonic</a></li>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#audience">Audience</a></li>
+                    <li><a href="#content">Content</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-3 footer-links">
                 <h4>More Sections</h4>
                 <ul>
+                    <li><a href="#what-is-sensor">Sensors</a></li>
+                    <li><a href="#camera">Camera</a></li>
+                    <li><a href="#ultrasonic">Ultrasonic</a></li>
                     <li><a href="#tinkercad">Tinkercad</a></li>
-                    <li><a href="#why-sensors-matter">Importance</a></li>
-                    <li><a href="#problem-setup">Problem Setup</a></li>
-                    <li><a href="#grid-map">Grid Map</a></li>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-12 footer-newsletter">
@@ -227,7 +275,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">Mentor</strong> <span>All Rights Reserved</span></p>
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Volt</strong> <span>All Rights Reserved</span></p>
         <div class="credits">
             Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by
             <a href="https://themewagon.com">ThemeWagon</a>
