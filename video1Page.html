@@ -133,13 +133,84 @@
 
     <section id="ultrasonic" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Ultrasonic = Ears</h2>
-            <p>Distance Measurement</p>
+            <h2>Ultrasonic Sensor = Ears</h2>
+            <p>How robots detect distance using sound</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>Ultrasonic sensors work similarly to bats or dolphins, using sound waves to detect how far away an object is.</p>
+
+            <!-- Short explanation -->
+            <p>
+                Ultrasonic sensors help robots detect how far away objects are.
+                They work like bats, sending out sounds and listening for echoes.
+            </p>
+
+            <!-- Labeled image -->
+            <div class="text-center my-4">
+                <img src="assets/img/Ultrasonic sensor.png"
+                     alt="Ultrasonic sensor showing sound sender and sound receiver"
+                     class="img-fluid"
+                     style="max-width: 450px;">
+                <p class="text-muted mt-2">
+                    The left side sends sound waves, and the right side listens for the echo.
+                </p>
+            </div>
+
+            <!-- How it works -->
+            <h5>How does it work?</h5>
+            <ul>
+                <li>The sensor sends out sound waves</li>
+                <li>The sound hits an object</li>
+                <li>The sound bounces back as an echo</li>
+                <li>The robot estimates how far away the object is</li>
+            </ul>
+
+            <!-- Learning prompt -->
+            <div class="alert alert-info mt-4">
+                <strong>Think about it:</strong>
+                What happens when the object is very close to the sensor?
+            </div>
+
+            <!-- Limitation -->
+            <p class="mt-3">
+                <strong>Note:</strong> Ultrasonic sensors may not work well with soft objects,
+                such as curtains, because sound does not bounce back clearly.
+            </p>
+
+            <!-- Distance Simulator -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Try it: Distance Simulator</h5>
+                    <p class="text-muted">
+                        You cannot hear ultrasonic sound, but robots can use it.
+                        Move the slider to change how far the object is and see
+                        what the robot decides to do.
+                    </p>
+
+                    <label for="distSlider" class="form-label">
+                        Object distance: <strong><span id="distValue">50</span> cm</strong>
+                    </label>
+                    <input type="range" class="form-range" id="distSlider" min="5" max="200" value="50">
+
+                    <div id="decisionBox" class="mt-3 p-3 rounded bg-success text-white">
+                        <strong>Robot decision:</strong>
+                        <span id="robotDecision">Safe to move</span>
+                    </div>
+
+                    <div class="mt-3">
+                        <span class="badge bg-danger me-2">Red = Stop</span>
+                        <span class="badge bg-warning text-dark me-2">Orange = Slow down</span>
+                        <span class="badge bg-success">Green = Safe</span>
+                    </div>
+
+
+                </div>
+            </div>
+
+
         </div>
     </section>
+
 
     <section id="tinkercad" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
