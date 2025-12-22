@@ -338,6 +338,8 @@ document.addEventListener("DOMContentLoaded", () => {
           await new Promise(res => setTimeout(res, 40));
         }
         statusEl.textContent = `Done. Path length: ${path.length - 1} steps. Expanded: ${closedSet.size} nodes.`;
+        const calcBox = document.getElementById("astarCalcBox");
+        if (calcBox) calcBox.classList.remove("d-none");
         animating = false;
         return;
       }
@@ -380,6 +382,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (animating) return;
     renderBase();
     statusEl.textContent = "Ready.";
+    const calcBox = document.getElementById("astarCalcBox");
+    if (calcBox) calcBox.classList.add("d-none");
+
   }
 
   runBtn.addEventListener("click", runAStar);
