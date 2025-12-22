@@ -1945,7 +1945,7 @@ section,
 .astar-cell.start  { background: #16a34a; color: #fff; }
 .astar-cell.goal   { background: #dc2626; color: #fff; }
 .astar-cell.open   { background: #93c5fd; }
-.astar-cell.closed { background: #60a5fa; }
+.astar-cell.closed { background: #8b5cf6; }
 .astar-cell.path   { background: #f59e0b; }
 
 .astar-legend .astar-badge {
@@ -1958,7 +1958,7 @@ section,
 .astar-legend .astar-goal  { background: #dc2626; color:#fff; }
 .astar-legend .astar-wall  { background: #111827; color:#fff; }
 .astar-legend .astar-open  { background: #93c5fd; }
-.astar-legend .astar-closed{ background: #60a5fa; }
+.astar-legend .astar-closed{ background: #8b5cf6; }
 .astar-legend .astar-path  { background: #f59e0b; }
 
 /* ===== Heuristic Grid ===== */
