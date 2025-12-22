@@ -1909,4 +1909,10 @@ section,
   --footer-background: #F8F9FA;
   --footer-text-color: #333333;
   --footer-link-hover: #1F5FA6;
+
+}
+
+/* Ultrasonic Distance Slider */
+#distSlider {
+  accent-color: var(--accent-color);
 }
