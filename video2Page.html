@@ -144,7 +144,7 @@
 
             <p>
                 A* (A-star) is a pathfinding algorithm that finds the shortest path from a start node to a goal node.
-                It is widely used in robotics, AI, and navigation because it balances explored cost and estimated cost.
+                It is widely used in robotics, AI, and navigation because it balances the cost travelled so far and the estimated cost to the goal.
             </p>
 
 
@@ -156,9 +156,20 @@
                 <li>Move expanded nodes to a “closed list” and repeat until the <strong>Goal</strong> is reached.</li>
             </ol>
 
+            <div class="text-center my-4">
+                <img src="assets/img/open-closed-diagram.png"
+                     alt="Diagram showing how nodes move from the open list to the closed list in A*"
+                     class="img-fluid"
+                     style="max-width: 500px;">
+                <p class="text-muted mt-2">
+                    Nodes move from the open list to the closed list once they are expanded.
+                </p>
+            </div>
+
+
             <div class="alert alert-info mt-4">
-                <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
-                A* is guaranteed to return an optimal shortest path.
+                <strong>Tip:</strong> If the heuristic <em>h(n)</em> does not overestimate the remaining distance,
+                A* will always find the shortest possible path.
             </div>
 
             <!-- A* Visualization -->
@@ -189,7 +200,10 @@
                 </div>
             </div>
 
-            <h5>Grid Map Representation</h5>
+            <h5>Grid Map Representation (Context)</h5>
+            <p class="text-muted">
+                This brief grid explanation is included only to support the A* visualisation below.
+            </p>
             <p>
                 The environment is represented as a two-dimensional grid map, where each square
                 corresponds to a possible position the robot can occupy.
