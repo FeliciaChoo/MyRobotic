@@ -133,4 +133,43 @@
 
   window.addEventListener("load", initSwiper);
 
+/**
+ * Ultrasonic distance simulator (Video 1)
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("distSlider");
+  const distValue = document.getElementById("distValue");
+  const decision = document.getElementById("robotDecision");
+  const decisionBox = document.getElementById("decisionBox");
+
+  // Stop if slider doesn't exist on this page
+  if (!slider) return;
+
+  function updateDistance() {
+    const d = Number(slider.value);
+    distValue.textContent = d;
+
+    // Reset colours
+    decisionBox.classList.remove("bg-success", "bg-warning", "bg-danger", "text-dark", "text-white");
+
+    if (d <= 20) {
+      decision.textContent = "Stop! Object is very close.";
+      decisionBox.classList.add("bg-danger", "text-white");
+    }
+    else if (d <= 50) {
+      decision.textContent = "Slow down and be careful.";
+      decisionBox.classList.add("bg-warning", "text-dark");
+    }
+    else {
+      decision.textContent = "Safe to move.";
+      decisionBox.classList.add("bg-success", "text-white");
+    }
+  }
+
+  slider.addEventListener("input", updateDistance);
+  updateDistance();
+});
+
+
+
 })();
