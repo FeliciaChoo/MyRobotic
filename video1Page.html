@@ -144,15 +144,117 @@
     <section id="tinkercad" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
             <h2>Tinkercad Demo</h2>
-            <p>Interactive Simulation</p>
+            <p>Interactive Simulation with Step-by-Step Guide</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>Interact with the circuit simulation below to see how the sensors work in real-time.</p>
-            <div style="border: 2px dashed #ccc; padding: 40px; text-align: center;">
-                Tinkercad Embed Placeholder
+            <p>Watch the simulation video first, then follow the steps below to simulate your own robot sensors in Tinkercad:</p>
+
+            <!-- ================= VIDEO ================= -->
+            <div style="margin-bottom: 40px; text-align: center;">
+                <h4>🎥 Simulation Demonstration Video</h4>
+                <video controls width="100%" style="max-width: 700px; border: 1px solid #ccc; border-radius: 8px;">
+                    <source src="assets/TinkercadDemo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+                    Video shows a virtual robot sensor simulation built using Tinkercad.
+                </p>
             </div>
+
+            <!-- Step 1 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 1: Create or Login to Tinkercad</h4>
+                <p>Go to <a href="https://www.tinkercad.com" target="_blank">Tinkercad</a> and sign in or create a free account.</p>
+                <img src="assets/img/tinkercad demo/step1.jpg" alt="Tinkercad Login" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+            </div>
+
+            <!-- Step 2 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 2: Create a New Circuit</h4>
+                <p>From the dashboard, click <b>Circuits → Create New Circuit</b>.</p>
+                <img src="assets/img/tinkercad demo/step2.jpg" alt="Create New Circuit" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+            </div>
+
+            <!-- Step 3 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 3: Add Components</h4>
+                <p>Add the following components to your workspace:</p>
+                <ul>
+                    <li>Arduino Uno</li>
+                    <li>Breadboard</li>
+                    <li>Ultrasonic Sensor (HC-SR04)</li>
+                    <li>Red LED</li>
+                    <li>Resistor</li>
+                </ul>
+                <img src="assets/img/tinkercad demo/step3.jpg" alt="Add Components" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+            </div>
+
+            <!-- Step 4 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 4: Connect Components</h4>
+                <p>Wire the components as shown in the video. Ensure power (red) and ground (black) are connected correctly.</p>
+                <img src="assets/img/tinkercad demo/step4.jpg" alt="Connect Components" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+            </div>
+
+            <!-- Step 5 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 5: Add Code</h4>
+                <p>Click <b>Code → Text Mode</b> and paste the Arduino code provided.</p>
+                <img src="assets/img/tinkercad demo/step5.jpg" alt="Add Arduino Code" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+                <img src="assets/img/tinkercad demo/step6.jpg" alt="Add Arduino Code" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;margin-top: 15px;">
+            </div>
+
+            <!-- Step 6 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 6: Start Simulation</h4>
+                <p>Click <b>Start Simulation</b> and observe the robot's behavior as you adjust the ultrasonic sensor.</p>
+                <img src="assets/img/tinkercad demo/step7.jpg" alt="Start Simulation" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+            </div>
+
+            <!-- Step 7 -->
+            <div style="margin-bottom: 30px;">
+                <h4>Step 7: Adjust Distance and Observe LED</h4>
+                <p>
+                    Move the distance slider on the ultrasonic sensor and observe the red LED:
+                </p>
+                <ul>
+                    <li>Longer distance → Red LED is <b>OFF</b></li>
+                    <li>Shorter distance → Red LED is <b>ON</b></li>
+                </ul>
+
+                <!-- Images showing LED condition -->
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                    <div style="flex: 1 1 45%;">
+                        <img src="assets/img/tinkercad demo/step9.jpg" alt="Long Distance LED Off" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+                        <p style="text-align: center; font-size: 0.9em; color: #555;">Long Distance - LED OFF</p>
+                    </div>
+                    <div style="flex: 1 1 45%;">
+                        <img src="assets/img/tinkercad demo/step8.jpg" alt="Short Distance LED On" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+                        <p style="text-align: center; font-size: 0.9em; color: #555;">Short Distance - LED ON</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <hr>
+
+            <h4>🔗 Open the Simulation Online</h4>
+            <p>Click the link below, then select <b>“Copy & Tinker”</b> to run your own version:</p>
+            <p>
+                <a href="https://www.tinkercad.com/things/14tIZ2buHMi/editel?sharecode=tEfpbsMGLHidv8tEU5oqLw81JprIwYolhEnFCEHPiQk"
+                   target="_blank"
+                   style="font-weight: bold;">
+                    👉 Open Tinkercad Robot Sensor Simulation
+                </a>
+            </p>
+
+            <p style="font-size: 0.9em; color: #555;">
+                You can modify the code and experiment safely in the virtual environment.
+            </p>
         </div>
     </section>
+
 
     <section id="why-sensors-matter" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
