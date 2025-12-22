@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="add information on ultrasonic sensor">
+    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="add distance simulator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/Ultrasonic sensor.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/img/Ultrasonic sensor.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video1Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video1Page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/video2Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video2Page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,12 +83,21 @@
       <option name="project" value="LOCAL" />
       <updated>1766398450233</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add distance simulator">
+      <option name="closed" value="true" />
+      <created>1766399940968</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1766399940968</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add Ultrasonic sensor.png" />
     <MESSAGE value="add information on ultrasonic sensor" />
-    <option name="LAST_COMMIT_MESSAGE" value="add information on ultrasonic sensor" />
+    <MESSAGE value="add distance simulator" />
+    <option name="LAST_COMMIT_MESSAGE" value="add distance simulator" />
   </component>
 </project>
