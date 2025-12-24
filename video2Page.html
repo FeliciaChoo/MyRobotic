@@ -284,15 +284,40 @@
         </div>
     </section>
 
-    <section id="obstacle-demo" class="starter-section section">
-        <div class="container section-title" data-aos="fade-up">
+
+    <section id="obstacle-demo" class="starter-section section pt-2">
+        <div class="container section-title pb-0" data-aos="fade-up">
             <h2>Obstacle Demo</h2>
             <p>Interactive Simulation</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>Click on the grid below to place obstacles and see how the A* algorithm recalculates the path.</p>
-            <div style="border: 2px dashed #ccc; padding: 40px; text-align: center;">
-                Interactive A* Grid Simulation Placeholder
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Interactive A* Visualisation</h5>
+                    <p>Customize the grid below, then click <strong>Run A*</strong> to see how robot find the shortest path.</p>
+
+                    <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+                        <button onclick="setIntMode('start')" class="btn btn-outline-primary btn-sm">Set Start</button>
+                        <button onclick="setIntMode('goal')" class="btn btn-outline-primary btn-sm">Set Goal</button>
+                        <button onclick="setIntMode('wall')" class="btn btn-outline-primary btn-sm">Place Obstacles</button>
+                        <div class="vr mx-2"></div>
+                        <button onclick="runInteractiveAStar()" class="btn btn-primary btn-sm">Run A*</button>
+                        <button onclick="resetIntGrid()" class="btn btn-secondary btn-sm">Reset</button>
+                        <span class="text-muted ms-1" id="intStatus">Ready.</span>
+                    </div>
+
+                    <div class="astar-legend mb-3">
+                        <span class="badge astar-badge astar-start">Start</span>
+                        <span class="badge astar-badge astar-goal">Goal</span>
+                        <span class="badge astar-badge astar-wall">Obstacle</span>
+                        <span class="badge astar-badge astar-open">Open</span>
+                        <span class="badge astar-badge astar-closed">Closed</span>
+                        <span class="badge astar-badge astar-path">Path</span>
+                    </div>
+
+                    <div id="interactiveGrid" class="astar-grid" style="grid-template-columns: repeat(10, 34px); justify-content: center;"></div>
+                </div>
             </div>
         </div>
     </section>
