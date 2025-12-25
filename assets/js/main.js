@@ -6,6 +6,7 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
 (function() {
   "use strict";
 
@@ -397,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })();
 
+//heuristic design
 document.addEventListener("DOMContentLoaded", () => {
   const gridSize = 8;
   const start = { x: 0, y: 0 };

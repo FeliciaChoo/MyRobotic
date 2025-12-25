@@ -63,8 +63,8 @@
                         <li><a href="#interactive-video2">Watch & Explore</a></li>
                         <li><a href="#problem-setup">Problem Setup</a></li>
                         <li><a href="#grid-map">Grid Map</a></li>
-                        <li><a href="#a-star">A* Algorithm</a></li>
-                        <li><a href="#cost-function">Cost Function</a></li>
+                        <li><a href="#a-star">A* Algorithm&Cost Function</a></li>
+                        <li><a href="#heuristic">Heuristic </a></li>
                         <li><a href="#obstacle-demo">Obstacle Demo</a></li>
                     </ul>
                 </li>
@@ -144,9 +144,25 @@
 
             <p>
                 A* (A-star) is a pathfinding algorithm that finds the shortest path from a start node to a goal node.
-                It is widely used in robotics, AI, and navigation because it balances the cost travelled so far and the estimated cost to the goal.
+                It is widely used in robotics, AI, and navigation because it balances explored cost and estimated cost.
             </p>
 
+            <div class="card my-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-2">Cost Function</h5>
+                    <p class="mb-2">
+                        A* evaluates nodes using:
+                    </p>
+                    <div class="p-3 rounded" style="background:#f6fbff;">
+                        <code style="font-size: 1.05rem;">f(n) = g(n) + h(n)</code>
+                    </div>
+                    <ul class="mt-3 mb-0">
+                        <li><strong>g(n)</strong>: actual cost from Start → current node</li>
+                        <li><strong>h(n)</strong>: heuristic estimate from current node → Goal</li>
+                        <li><strong>f(n)</strong>: total estimated cost via that node (A* picks the lowest f(n) next)</li>
+                    </ul>
+                </div>
+            </div>
 
             <h5>How A* works (high-level)</h5>
             <ol>
@@ -156,36 +172,10 @@
                 <li>Move expanded nodes to a “closed list” and repeat until the <strong>Goal</strong> is reached.</li>
             </ol>
 
-            <div class="text-center my-4">
-                <img src="assets/img/open-closed-diagram.png"
-                     alt="Diagram showing how nodes move from the open list to the closed list in A*"
-                     class="img-fluid"
-                     style="max-width: 500px;">
-                <p class="text-muted mt-2">
-                    Nodes move from the open list to the closed list once they are expanded.
-                </p>
-            </div>
-
             <div class="alert alert-info mt-4">
-                <strong>Tip:</strong> If the heuristic <em>h(n)</em> does not overestimate the remaining distance,
-                A* will always find the shortest possible path.
+                <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
+                A* is guaranteed to return an optimal shortest path.
             </div>
-
-            <h5>Grid Map Representation (Context)</h5>
-            <p class="text-muted">
-                This brief grid explanation is included only to support the A* visualisation below.
-            </p>
-            <p>
-                The environment is represented as a two-dimensional grid map, where each square
-                corresponds to a possible position the robot can occupy.
-            </p>
-
-            <ul>
-                <li>Each grid cell represents a discrete location in the environment.</li>
-                <li>The robot can move between neighbouring cells in four directions: up, down, left, and right.</li>
-                <li>Some cells are blocked by obstacles and cannot be traversed.</li>
-            </ul>
-
 
             <!-- A* Visualization -->
             <div class="card mt-4">
@@ -215,72 +205,54 @@
                 </div>
             </div>
 
-            <!-- A* Calculation Explanation (hidden by default) -->
-            <div id="astarCalcBox" class="card mt-4 d-none">
-                <div class="card-body">
-                    <h5 class="card-title mb-2">How the Path Length is Calculated</h5>
+            <h5>Grid Map Representation</h5>
+            <p>
+                The environment is represented as a two-dimensional grid map, where each square
+                corresponds to a possible position the robot can occupy.
+            </p>
 
-                    <p>
-                        A* does not directly calculate the final path length using the formula.
-                        Instead, it uses the cost function below to decide which grid cell to explore next.
-                    </p>
-
-                    <div class="p-3 rounded mb-3" style="background:#f6fbff;">
-                        <code style="font-size:1.05rem;">f(n) = g(n) + h(n)</code>
-                    </div>
-
-                    <ul>
-                        <li><strong>g(n)</strong> – number of steps from Start to the current cell</li>
-                        <li><strong>h(n)</strong> – estimated remaining distance to the Goal</li>
-                        <li><strong>f(n)</strong> – score used to prioritise which cell to explore</li>
-                    </ul>
-
-                    <p class="mt-3">
-                        Once the Goal is reached, the algorithm stops and the final
-                        <strong>path length is taken from g(goal)</strong>.
-                    </p>
-
-                    <div class="alert alert-success mt-3">
-                        <strong>In this simulation:</strong>
-                        The robot reached the goal with <strong>g(goal) = 18</strong>,
-                        meaning the shortest path contains <strong>18 steps</strong>.
-                    </div>
-                </div>
-            </div>
-
+            <ul>
+                <li>Each grid cell represents a discrete location in the environment.</li>
+                <li>The robot can move between neighbouring cells in four directions: up, down, left, and right.</li>
+                <li>Some cells are blocked by obstacles and cannot be traversed.</li>
+            </ul>
 
 
         </div>
     </section>
 
 
-    <section id="cost-function" class="starter-section section">
+    <section id="heuristic" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Cost Function</h2>
-            <p>The Math: f(n) = g(n) + h(n)</p>
-            <div class="card my-4">
-                <div class="card-body">
-                    <h5 class="card-title mb-2">Cost Function</h5>
-                    <p class="mb-2">
-                        A* evaluates nodes using:
-                    </p>
-                    <div class="p-3 rounded" style="background:#f6fbff;">
-                        <code style="font-size: 1.05rem;">f(n) = g(n) + h(n)</code>
-                    </div>
-                    <ul class="mt-3 mb-0">
-                        <li><strong>g(n)</strong>: actual cost from Start → current node</li>
-                        <li><strong>h(n)</strong>: heuristic estimate from current node → Goal</li>
-                        <li><strong>f(n)</strong>: total estimated cost via that node (A* picks the lowest f(n) next)</li>
-                    </ul>
-                </div>
-            </div>
+            <h2>Heuristic</h2>
+            <p>Guiding the robot smartly</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>How does the robot decide which step to take? It calculates the cost:</p>
-            <ul>
-                <li><strong>g(n):</strong> Cost from start to current node.</li>
-                <li><strong>h(n):</strong> Heuristic estimated cost to the goal.</li>
-            </ul>
+            <p>
+                A heuristic estimates how far the robot is from the goal. Each heuristic creates a different "path thinking".
+            </p>
+
+            <!-- Heuristic Selection -->
+            <label for="heuristicSelect"><strong>Choose Heuristic:</strong></label>
+            <select id="heuristicSelect">
+                <option value="manhattan">Manhattan Distance</option>
+                <option value="euclidean">Euclidean Distance</option>
+                <option value="diagonal">Diagonal Distance</option>
+            </select>
+
+            <!-- Short Explanation -->
+            <p id="heuristicDesc" class="mt-2" style="font-style:italic; color:#555;"></p>
+
+            <!-- Visualization Grid -->
+            <div id="gridWrapper" class="heuristic-grid-wrapper mt-3"></div>
+
+            <!-- Code Snippet -->
+            <h5 class="mt-4">Code Snippet</h5>
+            <div id="codeSnippet" class="colab-cell">
+                <div class="colab-header">📘 Heuristic Function</div>
+                <pre><code id="codeContent"></code></pre>
+            </div>
         </div>
     </section>
 
