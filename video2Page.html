@@ -172,6 +172,19 @@
                 <li>Move expanded nodes to a “closed list” and repeat until the <strong>Goal</strong> is reached.</li>
             </ol>
 
+            <!-- Open vs Closed List Diagram -->
+            <div class="text-center my-4">
+                <img src="assets/img/open-closed-diagram.png"
+                     alt="Open list to closed list flow in A*"
+                     class="img-fluid"
+                     style="max-width: 650px;">
+                <p class="text-muted mt-2 mb-0">
+                    Nodes start in the <strong>Open List</strong> (discovered) and move to the
+                    <strong>Closed List</strong> once they are expanded.
+                </p>
+            </div>
+
+
             <div class="alert alert-info mt-4">
                 <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
                 A* is guaranteed to return an optimal shortest path.
