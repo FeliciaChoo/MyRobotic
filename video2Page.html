@@ -287,6 +287,16 @@
                         <button onclick="setIntMode('goal')" class="btn btn-outline-primary btn-sm">Set Goal</button>
                         <button onclick="setIntMode('wall')" class="btn btn-outline-primary btn-sm">Place Obstacles</button>
                         <div class="vr mx-2"></div>
+
+                        <label for="demoHeuristicSelect" class="small mb-0"><strong>Heuristic:</strong></label>
+                        <select id="demoHeuristicSelect" class="form-select form-select-sm" style="width: auto;">
+                            <option value="manhattan">Manhattan</option>
+                            <option value="euclidean">Euclidean</option>
+                            <option value="diagonal">Diagonal</option>
+                        </select>
+
+                        <div class="vr mx-2"></div>
+
                         <button onclick="runInteractiveAStar()" class="btn btn-primary btn-sm">Run A*</button>
                         <button onclick="resetIntGrid()" class="btn btn-secondary btn-sm">Reset</button>
                         <span class="text-muted ms-1" id="intStatus">Ready.</span>
