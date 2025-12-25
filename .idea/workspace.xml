@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="Farzana-recording">
+    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="v1 conclusion and v2 demo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/video1Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video1Page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video2Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video2Page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,12 +22,15 @@
     &quot;assignee&quot;: &quot;FarzanaAlya&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/FeliciaChoo/MyRobotic.git",
-    "accountId": "19ee0528-79f1-42d2-9327-1de4dd43bd26"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/FeliciaChoo/MyRobotic.git&quot;,
+    &quot;accountId&quot;: &quot;19ee0528-79f1-42d2-9327-1de4dd43bd26&quot;
   }
-}]]></component>
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -82,7 +82,8 @@
       <workItem from="1766385352660" duration="12000" />
       <workItem from="1766568492134" duration="167000" />
       <workItem from="1766589137351" duration="9372000" />
-      <workItem from="1766652766451" duration="9609000" />
+      <workItem from="1766652766451" duration="10910000" />
+      <workItem from="1766675082035" duration="4453000" />
     </task>
     <task id="LOCAL-00001" summary="add Ultrasonic sensor.png">
       <option name="closed" value="true" />
@@ -204,7 +205,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766650301216</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="v1 conclusion and v2 demo">
+      <option name="closed" value="true" />
+      <created>1766662900941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1766662900941</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,6 +244,7 @@
     <MESSAGE value="add diagram to the a*" />
     <MESSAGE value="AstarRecording" />
     <MESSAGE value="Farzana-recording" />
-    <option name="LAST_COMMIT_MESSAGE" value="Farzana-recording" />
+    <MESSAGE value="v1 conclusion and v2 demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1 conclusion and v2 demo" />
   </component>
 </project>
