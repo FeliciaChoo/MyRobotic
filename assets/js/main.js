@@ -511,3 +511,164 @@ document.addEventListener("DOMContentLoaded", () => {
   heuristicSelect.addEventListener('change', e => showHeuristic(e.target.value));
   showHeuristic('manhattan');
 });
+
+/**
+ * Interactive A* Visualisation (Obstacle Demo)
+ */
+(function() {
+  const I_ROWS = 10;
+  const I_COLS = 10;
+  // Initialize grid as completely blank
+  let iGridData = Array.from({ length: I_ROWS }, () => Array(I_COLS).fill(0));
+  let iStart = { r: 0, c: 0 };
+  let iGoal = { r: 9, c: 9 };
+  let iMode = 'wall';
+  let isAnimating = false;
+  let iCells = [];
+
+  function iKey(r, c) { return `${r},${c}`; }
+  function iH(p) { return Math.abs(p.r - iGoal.r) + Math.abs(p.c - iGoal.c); }
+
+  window.setIntMode = function(m) {
+    if (isAnimating) return;
+    iMode = m;
+    const status = document.getElementById('intStatus');
+    if (status) status.innerText = `Mode: ${m.toUpperCase()}`;
+  };
+
+  window.resetIntGrid = function() {
+    if (isAnimating) return;
+    iGridData = Array.from({ length: I_ROWS }, () => Array(I_COLS).fill(0));
+    renderBaseInteractive();
+    const status = document.getElementById('intStatus');
+    if (status) status.innerText = "Ready.";
+    const calcBox = document.getElementById("astarCalcBox");
+    if (calcBox) calcBox.classList.add("d-none");
+  };
+
+  function handleInteraction(r, c) {
+    if (isAnimating) return;
+
+    if (iMode === 'start') {
+      iStart = { r, c };
+    } else if (iMode === 'goal') {
+      iGoal = { r, c };
+    } else if (iMode === 'wall') {
+      if ((r === iStart.r && c === iStart.c) || (r === iGoal.r && c === iGoal.c)) return;
+      // Toggle logic: Click once to add, click again to remove
+      iGridData[r][c] = iGridData[r][c] === 1 ? 0 : 1;
+    }
+    renderBaseInteractive();
+  }
+
+  function renderBaseInteractive() {
+    const gridEl = document.getElementById('interactiveGrid');
+    if (!gridEl) return;
+    gridEl.innerHTML = '';
+    iCells = Array.from({ length: I_ROWS }, () => Array(I_COLS).fill(null));
+
+    for (let r = 0; r < I_ROWS; r++) {
+      for (let c = 0; c < I_COLS; c++) {
+        const cell = document.createElement('div');
+        cell.className = 'astar-cell'; // Reuses teammate's visual style
+
+        if (r === iStart.r && c === iStart.c) cell.classList.add('start');
+        else if (r === iGoal.r && c === iGoal.c) cell.classList.add('goal');
+        else if (iGridData[r][c] === 1) cell.classList.add('wall');
+
+        cell.onclick = () => {
+          handleInteraction(r, c);
+        };
+
+        // DRAGGING: Triggers as mouse moves over cells while button is held
+        cell.onmouseenter = (e) => {
+          if(e.buttons === 1 && iMode === 'wall') handleInteraction(r, c);
+        };
+
+        gridEl.appendChild(cell);
+        iCells[r][c] = cell;
+      }
+    }
+  }
+
+  window.runInteractiveAStar = async function() {
+    if (isAnimating) return;
+    isAnimating = true;
+    const status = document.getElementById('intStatus');
+    status.innerText = "Running A*...";
+
+    renderBaseInteractive();
+
+    const startK = iKey(iStart.r, iStart.c);
+    const goalK  = iKey(iGoal.r, iGoal.c);
+    let open = [startK];
+    let openSet = new Set(open);
+    let closedSet = new Set();
+    let cameFrom = new Map();
+    let gScore = new Map();
+    let fScore = new Map();
+
+    gScore.set(startK, 0);
+    fScore.set(startK, iH(iStart));
+
+    while (open.length > 0) {
+      let bestIdx = 0;
+      for (let i = 1; i < open.length; i++) {
+        if ((fScore.get(open[i]) ?? Infinity) < (fScore.get(open[bestIdx]) ?? Infinity)) bestIdx = i;
+      }
+      const currentK = open.splice(bestIdx, 1)[0];
+      openSet.delete(currentK);
+      const [cr, cc] = currentK.split(",").map(Number);
+
+      if (currentK !== startK && currentK !== goalK) iCells[cr][cc].classList.add("closed");
+      closedSet.add(currentK);
+
+      if (currentK === goalK) {
+        let pathKeys = [];
+        let currP = currentK;
+        while (cameFrom.has(currP)) {
+          pathKeys.push(currP);
+          currP = cameFrom.get(currP);
+        }
+
+        for (const pk of pathKeys.reverse()) {
+          const [pr, pc] = pk.split(",").map(Number);
+          if (pk !== startK && pk !== goalK) iCells[pr][pc].classList.add("path");
+          await new Promise(res => setTimeout(res, 40));
+        }
+
+        status.textContent = `Done. Path length: ${pathKeys.length} steps. Expanded: ${closedSet.size} nodes.`;
+        const calcBox = document.getElementById("astarCalcBox");
+        if (calcBox) calcBox.classList.remove("d-none");
+
+        isAnimating = false;
+        return;
+      }
+
+      const neighbors = [
+        {r: cr-1, c: cc}, {r: cr+1, c: cc}, {r: cr, c: cc-1}, {r: cr, c: cc+1}
+      ].filter(p => p.r >= 0 && p.r < I_ROWS && p.c >= 0 && p.c < I_COLS);
+
+      for (const nb of neighbors) {
+        const nbK = iKey(nb.r, nb.c);
+        if (iGridData[nb.r][nb.c] === 1 || closedSet.has(nbK)) continue;
+
+        const tentG = (gScore.get(currentK) ?? Infinity) + 1;
+        if (!openSet.has(nbK)) {
+          open.push(nbK);
+          openSet.add(nbK);
+          if (nbK !== goalK) iCells[nb.r][nb.c].classList.add("open");
+        } else if (tentG >= (gScore.get(nbK) ?? Infinity)) continue;
+
+        cameFrom.set(nbK, currentK);
+        gScore.set(nbK, tentG);
+        fScore.set(nbK, tentG + iH(nb));
+      }
+      await new Promise(res => setTimeout(res, 45));
+    }
+    status.innerText = "No path found (blocked).";
+    isAnimating = false;
+  }
+
+  document.addEventListener('DOMContentLoaded', renderBaseInteractive);
+})();
