@@ -118,6 +118,44 @@
         </div>
         <div class="container" data-aos="fade-up">
             <p>Before a robot can move, it needs to understand its environment. We define the start point, the goal point, and the boundaries.</p>
+            <p>
+                In autonomous navigation, a robot is given a task:
+                to move from a starting point to a target destination.
+            </p>
+
+            <p>
+                However, the environment is not always empty.
+                There may be obstacles such as walls, objects, or restricted areas
+                that the robot cannot pass through.
+            </p>
+
+            <p>
+                This creates a navigation problem:
+                how can the robot reach its goal safely and efficiently
+                without colliding with obstacles?
+            </p>
+
+            <p>
+                To solve this problem, the real world is simplified into
+                a digital environment that the robot can understand,
+                such as a map with clear boundaries and constraints.
+            </p>
+
+            <p class="text-muted mt-3">
+                In the next sections, we will see how this environment
+                is represented using a grid map and how algorithms
+                help the robot find the best path.
+            </p>
+            <div class="text-center mt-4">
+                <img src="assets/img/environment-setup.png"
+                     alt="Abstracted robot navigation environment showing start, goal and obstacles"
+                     class="img-fluid border"
+                     style="max-width: 520px; background: #f9f9f9;">
+                <p class="text-muted mt-2">
+                    A simplified abstraction of a robot navigation environment,
+                    showing the start state, goal state, obstacles and boundaries.
+                </p>
+            </div>
         </div>
     </section>
 
