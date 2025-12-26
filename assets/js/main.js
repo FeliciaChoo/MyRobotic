@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", () => {
 (function() {
   const I_ROWS = 10;
   const I_COLS = 10;
-  // Initialize grid as completely blank
+
   let iGridData = Array.from({ length: I_ROWS }, () => Array(I_COLS).fill(0));
   let iStart = { r: 0, c: 0 };
   let iGoal = { r: 9, c: 9 };
@@ -529,7 +529,21 @@ document.addEventListener("DOMContentLoaded", () => {
   let iCells = [];
 
   function iKey(r, c) { return `${r},${c}`; }
-  function iH(p) { return Math.abs(p.r - iGoal.r) + Math.abs(p.c - iGoal.c); }
+
+  function iH(p, type) {
+    const dx = Math.abs(p.r - iGoal.r);
+    const dy = Math.abs(p.c - iGoal.c);
+
+    switch(type) {
+      case 'euclidean':
+        return Math.sqrt(dx * dx + dy * dy);
+      case 'diagonal':
+        return Math.max(dx, dy);
+      case 'manhattan':
+      default:
+        return dx + dy;
+    }
+  }
 
   window.setIntMode = function(m) {
     if (isAnimating) return;
@@ -557,7 +571,6 @@ document.addEventListener("DOMContentLoaded", () => {
       iGoal = { r, c };
     } else if (iMode === 'wall') {
       if ((r === iStart.r && c === iStart.c) || (r === iGoal.r && c === iGoal.c)) return;
-      // Toggle logic: Click once to add, click again to remove
       iGridData[r][c] = iGridData[r][c] === 1 ? 0 : 1;
     }
     renderBaseInteractive();
@@ -572,19 +585,15 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let r = 0; r < I_ROWS; r++) {
       for (let c = 0; c < I_COLS; c++) {
         const cell = document.createElement('div');
-        cell.className = 'astar-cell'; // Reuses teammate's visual style
+        cell.className = 'astar-cell';
 
         if (r === iStart.r && c === iStart.c) cell.classList.add('start');
         else if (r === iGoal.r && c === iGoal.c) cell.classList.add('goal');
         else if (iGridData[r][c] === 1) cell.classList.add('wall');
 
-        cell.onclick = () => {
-          handleInteraction(r, c);
-        };
-
-        // DRAGGING: Triggers as mouse moves over cells while button is held
+        cell.onclick = () => { handleInteraction(r, c); };
         cell.onmouseenter = (e) => {
-          if(e.buttons === 1 && iMode === 'wall') handleInteraction(r, c);
+          if (e.buttons === 1 && iMode === 'wall') handleInteraction(r, c);
         };
 
         gridEl.appendChild(cell);
@@ -599,6 +608,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const status = document.getElementById('intStatus');
     status.innerText = "Running A*...";
 
+    const hSelect = document.getElementById('demoHeuristicSelect');
+    const hType = hSelect ? hSelect.value : 'manhattan';
+
     renderBaseInteractive();
 
     const startK = iKey(iStart.r, iStart.c);
@@ -611,18 +623,23 @@ document.addEventListener("DOMContentLoaded", () => {
     let fScore = new Map();
 
     gScore.set(startK, 0);
-    fScore.set(startK, iH(iStart));
+    fScore.set(startK, iH(iStart, hType));
 
     while (open.length > 0) {
       let bestIdx = 0;
       for (let i = 1; i < open.length; i++) {
-        if ((fScore.get(open[i]) ?? Infinity) < (fScore.get(open[bestIdx]) ?? Infinity)) bestIdx = i;
+        if ((fScore.get(open[i]) ?? Infinity) < (fScore.get(open[bestIdx]) ?? Infinity)) {
+          bestIdx = i;
+        }
       }
+
       const currentK = open.splice(bestIdx, 1)[0];
       openSet.delete(currentK);
       const [cr, cc] = currentK.split(",").map(Number);
 
-      if (currentK !== startK && currentK !== goalK) iCells[cr][cc].classList.add("closed");
+      if (currentK !== startK && currentK !== goalK)
+        iCells[cr][cc].classList.add("closed");
+
       closedSet.add(currentK);
 
       if (currentK === goalK) {
@@ -635,42 +652,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (const pk of pathKeys.reverse()) {
           const [pr, pc] = pk.split(",").map(Number);
-          if (pk !== startK && pk !== goalK) iCells[pr][pc].classList.add("path");
+          if (pk !== startK && pk !== goalK) {
+            iCells[pr][pc].classList.add("path");
+          }
           await new Promise(res => setTimeout(res, 40));
         }
 
-        status.textContent = `Done. Path length: ${pathKeys.length} steps. Expanded: ${closedSet.size} nodes.`;
-        const calcBox = document.getElementById("astarCalcBox");
-        if (calcBox) calcBox.classList.remove("d-none");
-
+        status.textContent = `Done. Path: ${pathKeys.length} steps. Heuristic: ${hType.toUpperCase()}`;
         isAnimating = false;
         return;
       }
 
       const neighbors = [
-        {r: cr-1, c: cc}, {r: cr+1, c: cc}, {r: cr, c: cc-1}, {r: cr, c: cc+1}
-      ].filter(p => p.r >= 0 && p.r < I_ROWS && p.c >= 0 && p.c < I_COLS);
+        {r: cr-1, c: cc}, {r: cr+1, c: cc},
+        {r: cr, c: cc-1}, {r: cr, c: cc+1},
+        ...(hType !== 'manhattan' ? [
+          {r: cr-1, c: cc-1}, {r: cr-1, c: cc+1},
+          {r: cr+1, c: cc-1}, {r: cr+1, c: cc+1}
+        ] : [])
+      ].filter(p =>
+          p.r >= 0 && p.r < I_ROWS &&
+          p.c >= 0 && p.c < I_COLS
+      );
 
       for (const nb of neighbors) {
         const nbK = iKey(nb.r, nb.c);
         if (iGridData[nb.r][nb.c] === 1 || closedSet.has(nbK)) continue;
 
-        const tentG = (gScore.get(currentK) ?? Infinity) + 1;
+        const isDiagonal = nb.r !== cr && nb.c !== cc;
+
+        // Prevent corner cutting
+        if (isDiagonal) {
+          if (iGridData[cr][nb.c] === 1 || iGridData[nb.r][cc] === 1) continue;
+        }
+
+        const moveCost = isDiagonal ? 1.41 : 1;
+        const tentativeG = (gScore.get(currentK) ?? Infinity) + moveCost;
+
         if (!openSet.has(nbK)) {
           open.push(nbK);
           openSet.add(nbK);
           if (nbK !== goalK) iCells[nb.r][nb.c].classList.add("open");
-        } else if (tentG >= (gScore.get(nbK) ?? Infinity)) continue;
+        } else if (tentativeG >= (gScore.get(nbK) ?? Infinity)) continue;
 
         cameFrom.set(nbK, currentK);
-        gScore.set(nbK, tentG);
-        fScore.set(nbK, tentG + iH(nb));
+        gScore.set(nbK, tentativeG);
+        fScore.set(nbK, tentativeG + iH(nb, hType));
       }
+
       await new Promise(res => setTimeout(res, 45));
     }
+
     status.innerText = "No path found (blocked).";
     isAnimating = false;
-  }
+  };
 
   document.addEventListener('DOMContentLoaded', renderBaseInteractive);
 })();

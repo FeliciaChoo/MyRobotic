@@ -118,6 +118,44 @@
         </div>
         <div class="container" data-aos="fade-up">
             <p>Before a robot can move, it needs to understand its environment. We define the start point, the goal point, and the boundaries.</p>
+            <p>
+                In autonomous navigation, a robot is given a task:
+                to move from a starting point to a target destination.
+            </p>
+
+            <p>
+                However, the environment is not always empty.
+                There may be obstacles such as walls, objects, or restricted areas
+                that the robot cannot pass through.
+            </p>
+
+            <p>
+                This creates a navigation problem:
+                how can the robot reach its goal safely and efficiently
+                without colliding with obstacles?
+            </p>
+
+            <p>
+                To solve this problem, the real world is simplified into
+                a digital environment that the robot can understand,
+                such as a map with clear boundaries and constraints.
+            </p>
+
+            <p class="text-muted mt-3">
+                In the next sections, we will see how this environment
+                is represented using a grid map and how algorithms
+                help the robot find the best path.
+            </p>
+            <div class="text-center mt-4">
+                <img src="assets/img/environment-setup.png"
+                     alt="Abstracted robot navigation environment showing start, goal and obstacles"
+                     class="img-fluid border"
+                     style="max-width: 520px; background: #f9f9f9;">
+                <p class="text-muted mt-2">
+                    A simplified abstraction of a robot navigation environment,
+                    showing the start state, goal state, obstacles and boundaries.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -144,7 +182,7 @@
 
             <p>
                 A* (A-star) is a pathfinding algorithm that finds the shortest path from a start node to a goal node.
-                It is widely used in robotics, AI, and navigation because it balances explored cost and estimated cost.
+                It is widely used in robotics, AI and navigation because it balances explored cost and estimated cost.
             </p>
 
             <div class="card my-4">
@@ -171,6 +209,19 @@
                 <li>Expand its neighbours and update their costs if a better path is found.</li>
                 <li>Move expanded nodes to a “closed list” and repeat until the <strong>Goal</strong> is reached.</li>
             </ol>
+
+            <!-- Open vs Closed List Diagram -->
+            <div class="text-center my-4">
+                <img src="assets/img/open-closed-diagram.png"
+                     alt="Open list to closed list flow in A*"
+                     class="img-fluid"
+                     style="max-width: 650px;">
+                <p class="text-muted mt-2 mb-0">
+                    Nodes start in the <strong>Open List</strong> (discovered) and move to the
+                    <strong>Closed List</strong> once they are expanded.
+                </p>
+            </div>
+
 
             <div class="alert alert-info mt-4">
                 <strong>Tip:</strong> If the heuristic <em>h(n)</em> never overestimates the remaining distance (admissible),
@@ -264,6 +315,17 @@
         </div>
 
         <div class="container" data-aos="fade-up">
+            <p>Watch the simulation video first to see the A* logic in action, then follow the steps below to design your own navigation challenge.</p>
+            <div style="margin-bottom: 40px; text-align: center;">
+                <h4>🎥 Simulation Demonstration Video</h4>
+                <video controls width="100%" style="max-width: 700px; border: 1px solid #ccc; border-radius: 8px;">
+                    <source src="assets/ObstacleDemo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+                    Video demonstrates how a virtual robot uses the A* Algorithm to perceive obstacles and calculate the most efficient path from start to goal in real-time.
+                </p>
+            </div>
             <div class="card mt-2">
                 <div class="card-body">
                     <h5 class="card-title mb-2">Interactive A* Visualisation</h5>
@@ -274,6 +336,16 @@
                         <button onclick="setIntMode('goal')" class="btn btn-outline-primary btn-sm">Set Goal</button>
                         <button onclick="setIntMode('wall')" class="btn btn-outline-primary btn-sm">Place Obstacles</button>
                         <div class="vr mx-2"></div>
+
+                        <label for="demoHeuristicSelect" class="small mb-0"><strong>Heuristic:</strong></label>
+                        <select id="demoHeuristicSelect" class="form-select form-select-sm" style="width: auto;">
+                            <option value="manhattan">Manhattan</option>
+                            <option value="euclidean">Euclidean</option>
+                            <option value="diagonal">Diagonal</option>
+                        </select>
+
+                        <div class="vr mx-2"></div>
+
                         <button onclick="runInteractiveAStar()" class="btn btn-primary btn-sm">Run A*</button>
                         <button onclick="resetIntGrid()" class="btn btn-secondary btn-sm">Reset</button>
                         <span class="text-muted ms-1" id="intStatus">Ready.</span>

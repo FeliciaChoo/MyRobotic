@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="added video heuristic">
+    <list default="true" id="6a59b283-4a9e-4b8e-a921-82df594b7353" name="Changes" comment="v1 conclusion and v2 demo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/video2Page.html" beforeDir="false" afterPath="$PROJECT_DIR$/video2Page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +15,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="KEEP" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -25,15 +22,15 @@
     &quot;assignee&quot;: &quot;FarzanaAlya&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="b0a565d6-6137-49b0-a63e-f709eaecea16" />
-  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/FeliciaChoo/MyRobotic.git&quot;,
     &quot;accountId&quot;: &quot;19ee0528-79f1-42d2-9327-1de4dd43bd26&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -63,6 +60,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets" />
       <recent name="$PROJECT_DIR$/assets/img" />
     </key>
   </component>
@@ -84,6 +82,8 @@
       <workItem from="1766385352660" duration="12000" />
       <workItem from="1766568492134" duration="167000" />
       <workItem from="1766589137351" duration="9372000" />
+      <workItem from="1766652766451" duration="10910000" />
+      <workItem from="1766675082035" duration="4453000" />
     </task>
     <task id="LOCAL-00001" summary="add Ultrasonic sensor.png">
       <option name="closed" value="true" />
@@ -149,15 +149,71 @@
       <option name="project" value="LOCAL" />
       <updated>1766420947685</updated>
     </task>
-    <task id="LOCAL-00009" summary="added video heuristic">
+    <task id="LOCAL-00009" summary="ultrasonic video recording">
       <option name="closed" value="true" />
-      <created>1766629369450</created>
+      <created>1766637593284</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1766629369450</updated>
+      <updated>1766637593284</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="ultrasonic video recording">
+      <option name="closed" value="true" />
+      <created>1766637778378</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1766637778378</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add a* pic">
+      <option name="closed" value="true" />
+      <created>1766638074996</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1766638074996</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add diagram to the a*">
+      <option name="closed" value="true" />
+      <created>1766638301023</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1766638301023</updated>
+    </task>
+    <task id="LOCAL-00013" summary="AstarRecording">
+      <option name="closed" value="true" />
+      <created>1766641727263</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1766641727263</updated>
+    </task>
+    <task id="LOCAL-00014" summary="AstarRecording">
+      <option name="closed" value="true" />
+      <created>1766649461100</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1766649461100</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Farzana-recording">
+      <option name="closed" value="true" />
+      <created>1766650301215</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1766650301216</updated>
+    </task>
+    <task id="LOCAL-00016" summary="v1 conclusion and v2 demo">
+      <option name="closed" value="true" />
+      <created>1766662900941</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1766662900941</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +239,12 @@
     <MESSAGE value="change structure for explanation" />
     <MESSAGE value="change cost function from a* to cost function section" />
     <MESSAGE value="added diagram to the A*" />
-    <MESSAGE value="added video heuristic" />
-    <option name="LAST_COMMIT_MESSAGE" value="added video heuristic" />
+    <MESSAGE value="ultrasonic video recording" />
+    <MESSAGE value="add a* pic" />
+    <MESSAGE value="add diagram to the a*" />
+    <MESSAGE value="AstarRecording" />
+    <MESSAGE value="Farzana-recording" />
+    <MESSAGE value="v1 conclusion and v2 demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1 conclusion and v2 demo" />
   </component>
 </project>
