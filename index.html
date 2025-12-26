@@ -2,6 +2,22 @@
 <html lang="en">
 
 <head>
+    <style>
+        .team-avatar {
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          overflow: hidden;
+          margin: 0 auto 12px;
+        }
+
+        .team-avatar img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+    </style>
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>My Robotic Project - Mentor Template</title>
@@ -103,7 +119,13 @@
         <p>Project Introduction</p>
     </div>
     <div class="container" data-aos="fade-up">
-        <p>Project overview content goes here.</p>
+        <p>
+            This project introduces key concepts in educational robotics, focusing on robot sensors,
+            perception, and autonomous navigation. By combining clear explanations, visual illustrations,
+            and interactive demonstrations, the project helps learners understand how robots perceive
+            their environment and plan paths using algorithms such as A*.
+        </p>
+
     </div>
 </section>
 
@@ -113,7 +135,14 @@
             <p>Our Goals</p>
         </div>
         <div class="container" data-aos="fade-up">
-            <p>Objectives details go here.</p>
+            <p>The objectives of this project are to:</p>
+            <ul>
+                <li>Introduce fundamental concepts of robot sensors and perception.</li>
+                <li>Explain basic path planning and navigation techniques.</li>
+                <li>Demonstrate the A* algorithm using simplified environments.</li>
+                <li>Support learning through visual and interactive examples.</li>
+            </ul>
+
         </div>
     </section>
 
@@ -123,7 +152,17 @@
             <p>Who is this for?</p>
         </div>
         <div class="container" data-aos="fade-up">
-            <p>Audience details go here.</p>
+            <p>This project is designed for multiple target audiences, including:</p>
+            <ul>
+                <li>Junior learners who are new to robotics and sensors.</li>
+                <li>Undergraduate students studying robotics, artificial intelligence, or autonomous systems.</li>
+                <li>Educators seeking simple teaching materials for robotics concepts.</li>
+            </ul>
+            <p>
+                The content is structured to gradually increase in complexity, making it suitable for learners
+                with different technical backgrounds.
+            </p>
+
         </div>
     </section>
 
@@ -133,7 +172,13 @@
             <p>What you will learn</p>
         </div>
         <div class="container" data-aos="fade-up">
-            <p>Content description goes here.</p>
+            <ul>
+                <li>Basic principles of robot sensors such as cameras and ultrasonic sensors.</li>
+                <li>How robots perceive and interpret their surroundings.</li>
+                <li>How navigation problems are modeled using environments and grid maps.</li>
+                <li>The fundamentals of path planning algorithms, including A* search.</li>
+            </ul>
+
         </div>
     </section>
 
@@ -143,7 +188,37 @@
             <p>Meet the Members</p>
         </div>
         <div class="container" data-aos="fade-up">
-            <p>Team members details go here.</p>
+            <div class="row gy-4 justify-content-center">
+
+                <!-- En Yi -->
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="team-avatar">
+                        <img src="assets/team/enyi.jpg" alt="Choo En Yi">
+                    </div>
+                    <h5>Choo En Yi</h5>
+                    <p>Cost function and heuristic explanation.</p>
+                </div>
+
+                <!-- Farzana -->
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="team-avatar">
+                        <img src="assets/team/farzana.png" alt="Nur Farzana Alya">
+                    </div>
+                    <h5>Nur Farzana Alya</h5>
+                    <p>A* algorithm explanation and visualization.</p>
+                </div>
+
+                <!-- Hu Lanyin -->
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="team-avatar">
+                        <img src="assets/team/lanyin.jpg" alt="Hu Lanyin">
+                    </div>
+                    <h5>Hu Lanyin</h5>
+                    <p>Problem definition, environment setup, and educational content.</p>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
