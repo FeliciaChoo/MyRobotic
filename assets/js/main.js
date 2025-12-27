@@ -709,3 +709,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener('DOMContentLoaded', renderBaseInteractive);
 })();
+
+// =============================
+// Grid Map – Hana (Video 2)
+// =============================
+document.addEventListener("DOMContentLoaded", () => {
+  const board = document.getElementById("gridBoard");
+  if (!board) return; // prevents affecting other pages
+
+  const modeObstacleBtn = document.getElementById("modeObstacleBtn");
+  const modeStartBtn = document.getElementById("modeStartBtn");
+  const modeGoalBtn = document.getElementById("modeGoalBtn");
+  const resetBtn = document.getElementById("resetGridBtn");
+  const demoBtn = document.getElementById("demoGridBtn");
+
+  const SIZE = 10;
+
+  let mode = "obstacle"; // "obstacle" | "start" | "goal"
+  let start = { r: 0, c: 1 };
+  let goal = { r: 8, c: 8 };
+
+  // 0 free, 1 obstacle
+  let grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+
+  function setActive(btn) {
+    [modeObstacleBtn, modeStartBtn, modeGoalBtn].forEach(b => b && b.classList.remove("active"));
+    btn && btn.classList.add("active");
+  }
+
+  function resetGrid() {
+    grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+    start = { r: 0, c: 1 };
+    goal = { r: 8, c: 8 };
+    render();
+  }
+
+  function loadDemo() {
+    resetGrid();
+    const demoObstacles = [
+      [3,4],[4,4],[5,4],[4,5], // same as your image style
+      [2,2],[2,3],[2,4],
+      [6,7],[7,7],[8,7]
+    ];
+    demoObstacles.forEach(([r,c]) => grid[r][c] = 1);
+    render();
+  }
+
+  function render() {
+    board.innerHTML = "";
+
+    for (let r = 0; r < SIZE; r++) {
+      for (let c = 0; c < SIZE; c++) {
+        const cell = document.createElement("div");
+        cell.className = "grid-cell";
+
+        // start/goal display
+        if (r === start.r && c === start.c) {
+          cell.classList.add("start");
+          cell.textContent = "S";
+        } else if (r === goal.r && c === goal.c) {
+          cell.classList.add("goal");
+          cell.textContent = "G";
+        } else if (grid[r][c] === 1) {
+          cell.classList.add("obstacle");
+        }
+
+        cell.addEventListener("click", () => {
+          // MODE: place start
+          if (mode === "start") {
+            // don't allow start on an obstacle
+            grid[r][c] = 0;
+            start = { r, c };
+            // ensure start != goal
+            if (start.r === goal.r && start.c === goal.c) {
+              goal = { r: SIZE - 1, c: SIZE - 1 };
+            }
+            render();
+            return;
+          }
+
+          // MODE: place goal
+          if (mode === "goal") {
+            grid[r][c] = 0;
+            goal = { r, c };
+            if (start.r === goal.r && start.c === goal.c) {
+              start = { r: 0, c: 0 };
+            }
+            render();
+            return;
+          }
+
+          // MODE: toggle obstacles
+          // don’t allow obstacle on start/goal
+          if ((r === start.r && c === start.c) || (r === goal.r && c === goal.c)) return;
+          grid[r][c] = grid[r][c] === 1 ? 0 : 1;
+          render();
+        });
+
+        board.appendChild(cell);
+      }
+    }
+  }
+
+  // button wiring
+  if (modeObstacleBtn) modeObstacleBtn.addEventListener("click", () => { mode = "obstacle"; setActive(modeObstacleBtn); });
+  if (modeStartBtn) modeStartBtn.addEventListener("click", () => { mode = "start"; setActive(modeStartBtn); });
+  if (modeGoalBtn) modeGoalBtn.addEventListener("click", () => { mode = "goal"; setActive(modeGoalBtn); });
+
+  if (resetBtn) resetBtn.addEventListener("click", resetGrid);
+  if (demoBtn) demoBtn.addEventListener("click", loadDemo);
+
+  // initial render
+  setActive(modeObstacleBtn);
+  render();
+});

@@ -161,14 +161,110 @@
 
     <section id="grid-map" class="starter-section section">
         <div class="container section-title" data-aos="fade-up">
-            <h2>Grid Map</h2>
-            <p>Digital Representation</p>
+            <h2>Grid Map Representation</h2>
+            <p>Digital representation of the environment for robot navigation</p>
         </div>
+
         <div class="container" data-aos="fade-up">
-            <p>We simplify the real world into a grid of squares. Each square is either "free" or "occupied" by an obstacle.</p>
-            <div class="text-center mt-3">
-                <img src="assets/img/navigation/grid-map.png" alt="Grid Map Example" class="img-fluid border" style="max-width: 400px; min-height: 200px; background: #f9f9f9;">
+
+            <!-- Introduction -->
+            <p>
+                In robot navigation, the real world must first be converted into a
+                <strong>digital representation</strong> that a computer can understand.
+                One of the most common and simple representations is the
+                <strong>grid map</strong>.
+            </p>
+
+            <p>
+                A grid map divides the environment into equal-sized <strong>cells</strong>.
+                Each cell stores information about whether the robot can move into that area
+                or if it is blocked by an obstacle.
+            </p>
+
+            <!-- Digital representation -->
+            <h5 class="mt-4">Digital Representation (Real World → Data)</h5>
+            <p>
+                Robots cannot reason directly about physical space. Instead, sensor data
+                is converted into numerical values that describe the environment.
+                In a grid map, each cell is represented digitally using simple values.
+            </p>
+
+            <ul>
+                <li><strong>0</strong> – free space</li>
+                <li><strong>1</strong> – obstacle</li>
+                <li><strong>S</strong> – start position of the robot</li>
+                <li><strong>G</strong> – goal or destination</li>
+            </ul>
+
+            <div class="alert alert-info mt-3">
+                <strong>Key idea:</strong> Once the environment is represented as data,
+                path planning algorithms such as A* can compute a path logically and efficiently.
             </div>
+
+            <!-- Cell meaning -->
+            <h5 class="mt-4">Cell Meanings in a Grid Map</h5>
+            <ul>
+                <li><strong>Free cells</strong> allow robot movement</li>
+                <li><strong>Obstacle cells</strong> represent walls or blocked areas</li>
+                <li><strong>Start cell (S)</strong> marks where the robot begins</li>
+                <li><strong>Goal cell (G)</strong> marks the target destination</li>
+            </ul>
+
+            <!-- Static image -->
+            <div class="text-center my-4">
+                <img
+                        src="assets/img/grid-map-example.png"
+                        alt="Grid map showing start, goal, and obstacls"
+                        class="img-fluid rounded"
+                        style="max-width: 520px;">
+                <p class="text-muted mt-2">
+                    A grid map example where S is the start position, G is the goal,
+                    and blue coloured cells represent obstacles.
+                </p>
+            </div>
+
+            <!-- Interactive placeholder -->
+            <h5 class="mt-4">Interactive Grid Map</h5>
+            <p>
+                Before running a path planning algorithm, the robot must first define
+                which cells are free and which are blocked. The interactive grid below
+                allows us to explore this idea by marking obstacles manually. Click cells to build a map: add Obstacles, set the Start (S), and set the Goal (G).
+                This is how we define the environment before applying path planning algorithms such as A*.
+            </p>
+
+            <!-- This div is used by script.js -->
+            <div class="grid-ui">
+                <div class="grid-controls">
+                    <button type="button" class="grid-btn active" id="modeObstacleBtn"> Set Obstacles</button>
+                    <button type="button" class="grid-btn" id="modeStartBtn"> Set Start</button>
+                    <button type="button" class="grid-btn" id="modeGoalBtn"> Set Goal</button>
+
+                    <div class="grid-controls-right">
+                        <button type="button" class="grid-btn" id="demoGridBtn"> Demo</button>
+                        <button type="button" class="grid-btn danger" id="resetGridBtn"> Reset</button>
+                    </div>
+                </div>
+
+                <div class="grid-legend">
+                    <span><span class="legend-box free"></span> Free</span>
+                    <span><span class="legend-box obstacle"></span> Obstacle</span>
+                    <span><span class="legend-box start"></span> Start (S)</span>
+                    <span><span class="legend-box goal"></span> Goal (G)</span>
+                </div>
+
+                <div class="grid-container text-center my-3">
+                    <div id="gridBoard" aria-label="Interactive grid map"></div>
+                </div>
+            </div>
+
+            <details class="mt-3">
+                <summary><strong>Why are grid maps important?</strong></summary>
+                <p class="mt-2">
+                    Grid maps simplify navigation by breaking continuous space into discrete steps.
+                    This makes robot movement easier to analyse and enables efficient path planning.
+                </p>
+            </details>
+
         </div>
     </section>
 
