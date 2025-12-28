@@ -4291,6 +4291,20 @@ section,
   margin: 0;
 }
 
+/* Video Introduction spacing — Page 2 (match Page 1) */
+#interactive-video2 .section-title {
+  margin-bottom: 6px !important;
+  padding-bottom: 0 !important;
+}
+
+#interactive-video2 .video-subtitle {
+  margin: 0 0 12px 0 !important;   /* key: reduce gap under "Getting Started..." */
+}
+
+#interactive-video2 .container[data-aos="fade-up"] {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
 
 
 
